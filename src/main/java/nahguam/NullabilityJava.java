@@ -20,12 +20,12 @@ public class NullabilityJava {
         }
         Integer value = entry.getValue();
         if (value!=null) {
-            return value;
+            return value * 2;
         }
         return defaultValue;
     }
 
     static <K> int valueTimes2OrDefaultAlternativa(@Nullable Map.Entry<K, Integer> entry, int defaultValue) {
-        return Optional.ofNullable(entry).map(Map.Entry::getValue).orElse(defaultValue);
+        return Optional.ofNullable(entry).map(Map.Entry::getValue).map(i -> i * 2).orElse(defaultValue);
     }
 }
